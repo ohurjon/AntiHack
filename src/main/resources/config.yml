@@ -1,6 +1,6 @@
 server :
-  prefix : "[ Ohurjon ]"
+  prefix : "§l§b[ §l§eOhurjon §l§b] "
 reach :
   range : 5.5
-  notice : "{name}의 이상한 데미지 범위 : {range} "
+  notice : "§l§e{name}§l§f의 이상한 데미지 범위 : §l§e{range}"
 
