@@ -1,0 +1,37 @@
+
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.3.72'
+    id 'kr.entree.spigradle' version '2.2.3'
+}
+
+group 'kr.ohurjon'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    spigot()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compileOnly spigot('1.12.2')
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+spigot {
+    debug {
+        args '--nogui','--nojline'
+        jvmArgs '-Xmx8G'
+    }
+}
+
+spigot {
+    authors 'ohurjon'
+    apiVersion '1.12'
+}

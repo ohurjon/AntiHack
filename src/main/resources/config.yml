@@ -1,0 +1,6 @@
+server :
+  prefix : "[ Ohurjon ]"
+reach :
+  range : 5.5
+  notice : "{name}의 이상한 데미지 범위 : {range} "
+
