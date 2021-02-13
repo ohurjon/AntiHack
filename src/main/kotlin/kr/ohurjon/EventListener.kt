@@ -34,7 +34,7 @@ class EventListener : Listener {
 
     @EventHandler
     fun cps(event: PlayerInteractEvent)  {
-        val player = event.player
+
 
     }
 }
