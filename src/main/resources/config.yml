@@ -3,4 +3,4 @@ server :
 reach :
   range : 5.5
   notice : "§l§e{name}§l§f의 이상한 데미지 범위 : §l§e{range}"
-
+  items: ["WOOD_SWORD", "NETHER_STALK", "AIR"]

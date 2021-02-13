@@ -24,7 +24,7 @@ class EventListener : Listener {
 
             val config = plugin.config
 
-            if (type == "WOOD_SWORD" || type == "NETHER_STALK" || type == "AIR" ) {
+            if (config.getList("reach.items").contains(type)) {
                 if (range >= config.getDouble("reach.range") )
                 for (player in plugin.server.onlinePlayers) {
                     val notice : String  =
@@ -39,6 +39,6 @@ class EventListener : Listener {
 
     @EventHandler
     fun cps(event: PlayerInteractEvent)  {
-
+        //TODO : 2021.02.14 cps 구상... - ohurjon
     }
 }
