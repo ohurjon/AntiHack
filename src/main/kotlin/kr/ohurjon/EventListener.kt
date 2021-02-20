@@ -38,13 +38,12 @@ class EventListener : Listener {
 
     @EventHandler
     fun cps(event: PlayerInteractEvent)  {
-        plugin.server.broadcastMessage("빻")
         val manager = ClickManager()
         val click : Click =
         if (manager.containClick(event.player)) {
-            Click(event.player)
-        } else {
             manager.getClick(event.player)!!
+        } else {
+            Click(event.player)
         }
         click.addClick(1)
     }

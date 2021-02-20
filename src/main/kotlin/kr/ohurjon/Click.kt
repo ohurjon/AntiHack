@@ -6,10 +6,12 @@ import org.bukkit.scheduler.BukkitRunnable
 class Click(private val player : Player) {
     private var click : Int = 0
     private var plugin : AntiHack = AntiHack.instance
+    private var manager : ClickManager = ClickManager()
 
     init {
+        print("생성되고 실생됨..")
         this.runCheck()
-        ClickManager().addClick(this)
+        manager.addClick(this)
     }
 
 
@@ -35,19 +37,21 @@ class Click(private val player : Player) {
         val limit = plugin.config.getInt("cps.limit")
         val task : BukkitRunnable = object : BukkitRunnable() {
             override fun run() {
-                if(beforeClick - click >= limit && i < 10){
-                    plugin.server.broadcastMessage(plugin.config.getString("cps.message"))
+                if(click - beforeClick >= limit && i < 10){
+                    // TODO:높은 cps 처리...
                 }
-                if(i == 10){
+                if(i == plugin.config.getInt("cps.time")){
                     if(click/10 >= limit){
-                        plugin.server.broadcastMessage("이상이상")
+                        // TODO:높은 cps 처리...
                     }
+                    manager.removeClick(player)
+                    this.cancel()
                 }
                 beforeClick = click
                 i += 1
             }
         }
-        task.runTaskTimerAsynchronously(plugin,20L,200L)
+        task.runTaskTimerAsynchronously(plugin,0L,20L)
     }
 
 }
