@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerInteractEvent
 
 class EventListener : Listener {
 
-    private val plugin = kr.ohurjon.AntiHack.AntiHack.Companion.instance
+    private val plugin = AntiHack.instance
 
     @EventHandler
     fun reach(event: EntityDamageByEntityEvent) {
@@ -31,7 +31,7 @@ class EventListener : Listener {
 
     @EventHandler
     fun cps(event: PlayerInteractEvent)  {
-        if(event.action.name != "RIGHT_CLICK_BLOCK") {
+        if(event.action.name != "RIGHT_CLICK_BLOCK" && event.action.name != "PHYSICAL") {
             val manager = ClickManager()
             val click: Click =
                 if (manager.containClick(event.player)) {
