@@ -1,10 +1,10 @@
-package kr.ohurjon
+package kr.ohurjon.AntiHack
 
 import org.bukkit.entity.Player
 
 class ClickManager {
     companion object {
-        private var Map = HashMap<Player,Click>();
+        private var Map = HashMap<Player, Click>();
     }
 
     fun addClick(click : Click) {

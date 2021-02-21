@@ -1,4 +1,4 @@
-package kr.ohurjon
+package kr.ohurjon.AntiHack
 
 import kr.entree.spigradle.annotations.SpigotPlugin
 

@@ -1,4 +1,4 @@
-package kr.ohurjon.Event
+package kr.ohurjon.AntiHack.Event
 
 import org.bukkit.event.Event
 import org.bukkit.event.HandlerList

@@ -1,7 +1,6 @@
-package kr.ohurjon
+package kr.ohurjon.AntiHack
 
-import kr.ohurjon.Event.PlayerCpsEvent
-import kr.ohurjon.Event.PlayerReachEvent
+import kr.ohurjon.AntiHack.Event.PlayerReachEvent
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -11,7 +10,7 @@ import org.bukkit.event.player.PlayerInteractEvent
 
 class EventListener : Listener {
 
-    private val plugin = AntiHack.instance
+    private val plugin = kr.ohurjon.AntiHack.AntiHack.Companion.instance
 
     @EventHandler
     fun reach(event: EntityDamageByEntityEvent) {

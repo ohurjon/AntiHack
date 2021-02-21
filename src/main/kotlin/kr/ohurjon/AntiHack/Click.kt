@@ -1,12 +1,12 @@
-package kr.ohurjon
+package kr.ohurjon.AntiHack
 
-import kr.ohurjon.Event.PlayerCpsEvent
+import kr.ohurjon.AntiHack.Event.PlayerCpsEvent
 import org.bukkit.entity.Player
 import org.bukkit.scheduler.BukkitRunnable
 
 class Click(private val player : Player) {
     private var click : Int = 0
-    private var plugin : AntiHack = AntiHack.instance
+    private var plugin : AntiHack = kr.ohurjon.AntiHack.AntiHack.Companion.instance
     private var manager : ClickManager = ClickManager()
 
     init {
