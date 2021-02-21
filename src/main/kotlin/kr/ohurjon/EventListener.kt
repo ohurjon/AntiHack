@@ -25,28 +25,23 @@ class EventListener : Listener {
 
             if (config.getList("reach.items").contains(type)) {
                 if (range >= config.getDouble("reach.range") )
-                for (player in plugin.server.onlinePlayers) {
-                    plugin.server.pluginManager.callEvent(PlayerReachEvent(range))
-                }
+                    plugin.server.pluginManager.callEvent(PlayerReachEvent(damager,range))
             }
         }
     }
 
     @EventHandler
     fun cps(event: PlayerInteractEvent)  {
-        val manager = ClickManager()
-        val click : Click =
-        if (manager.containClick(event.player)) {
-            manager.getClick(event.player)!!
-        } else {
-            Click(event.player)
+        if(event.action.name != "RIGHT_CLICK_BLOCK") {
+            val manager = ClickManager()
+            val click: Click =
+                if (manager.containClick(event.player)) {
+                    manager.getClick(event.player)!!
+                } else {
+                    Click(event.player)
+                }
+            click.addClick(1)
         }
-        click.addClick(1)
-    }
-
-    @EventHandler
-    fun dsa(event: PlayerCpsEvent){
-        event.getCps()
     }
 
 }

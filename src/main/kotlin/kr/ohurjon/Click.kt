@@ -38,7 +38,7 @@ class Click(private val player : Player) {
         val task : BukkitRunnable = object : BukkitRunnable() {
             override fun run() {
                 if(click - beforeClick >= limit && i < 10){
-                    plugin.server.pluginManager.callEvent(PlayerCpsEvent(click-beforeClick))
+                    plugin.server.pluginManager.callEvent(PlayerCpsEvent(player,click-beforeClick))
                 }
                 if(i == plugin.config.getInt("cps.time")){
                     manager.removeClick(player)
