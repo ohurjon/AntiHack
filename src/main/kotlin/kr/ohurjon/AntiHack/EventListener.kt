@@ -31,7 +31,7 @@ class EventListener : Listener {
 
     @EventHandler
     fun cps(event: PlayerInteractEvent)  {
-        if(event.action.name != "RIGHT_CLICK_BLOCK" && event.action.name != "PHYSICAL") {
+        if(!event.action.name.contains("RIGHT") && event.action.name != "PHYSICAL") {
             val manager = ClickManager()
             val click: Click =
                 if (manager.containClick(event.player)) {

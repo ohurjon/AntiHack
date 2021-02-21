@@ -6,7 +6,7 @@ import org.bukkit.scheduler.BukkitRunnable
 
 class Click(private val player : Player) {
     private var click : Int = 0
-    private var plugin : AntiHack = kr.ohurjon.AntiHack.AntiHack.Companion.instance
+    private var plugin : AntiHack = AntiHack.instance
     private var manager : ClickManager = ClickManager()
 
     init {
@@ -37,7 +37,7 @@ class Click(private val player : Player) {
         val limit = plugin.config.getInt("cps.limit")
         val task : BukkitRunnable = object : BukkitRunnable() {
             override fun run() {
-                if(click - beforeClick >= limit && i < 10){
+                if(click - beforeClick >= limit){
                     plugin.server.pluginManager.callEvent(PlayerCpsEvent(player,click-beforeClick))
                 }
                 if(i == plugin.config.getInt("cps.time")){
