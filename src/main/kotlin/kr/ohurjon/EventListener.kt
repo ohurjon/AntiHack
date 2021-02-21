@@ -1,12 +1,12 @@
 package kr.ohurjon
 
+import kr.ohurjon.Event.PlayerCpsEvent
+import kr.ohurjon.Event.PlayerReachEvent
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.player.PlayerInteractEvent
-
-import org.bukkit.scheduler.BukkitRunnable
 
 
 class EventListener : Listener {
@@ -26,11 +26,7 @@ class EventListener : Listener {
             if (config.getList("reach.items").contains(type)) {
                 if (range >= config.getDouble("reach.range") )
                 for (player in plugin.server.onlinePlayers) {
-                    val notice : String  =
-                        config.getString("server.prefix") + config.getString("reach.notice")
-                        .replace("{name}",damager.name)
-                        .replace("{range}",range.toString())
-                    if (player.isOp) player.sendMessage(notice)
+                    plugin.server.pluginManager.callEvent(PlayerReachEvent(range))
                 }
             }
         }
@@ -46,6 +42,11 @@ class EventListener : Listener {
             Click(event.player)
         }
         click.addClick(1)
+    }
+
+    @EventHandler
+    fun dsa(event: PlayerCpsEvent){
+        event.getCps()
     }
 
 }
