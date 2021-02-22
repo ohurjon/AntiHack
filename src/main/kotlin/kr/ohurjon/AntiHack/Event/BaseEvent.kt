@@ -1,9 +1,10 @@
 package kr.ohurjon.AntiHack.Event
 
-import org.bukkit.event.Event
+import org.bukkit.entity.Player
 import org.bukkit.event.HandlerList
+import org.bukkit.event.player.PlayerEvent
 
-open class BaseEvent : Event() {
+open class BaseEvent(who: Player) : PlayerEvent(who) {
     companion object {
         private val handler: HandlerList = HandlerList()
         @JvmStatic
