@@ -4,15 +4,15 @@ import org.bukkit.entity.Player
 
 class ClickManager {
     companion object {
-        private var Map = HashMap<Player, Click>();
+        var Map = HashMap<Player, Click>();
     }
 
     fun addClick(click : Click) {
-        Map.put(click.getPlayer(),click)
+        Map[click.player] = click
     }
 
     fun removeClick(click: Click){
-        Map.remove(click.getPlayer())
+        Map.remove(click.player)
     }
 
     fun removeClick(player : Player){
@@ -20,10 +20,10 @@ class ClickManager {
     }
 
     fun getClick(player: Player) : Click? {
-        return Map.get(player)
+        return Map[player]
     }
 
-    fun countClick(): Int {
+    fun countClicks(): Int {
         return Map.size
     }
 

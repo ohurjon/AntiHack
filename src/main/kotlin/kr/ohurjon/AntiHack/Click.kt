@@ -4,51 +4,53 @@ import kr.ohurjon.AntiHack.Event.PlayerCpsEvent
 import org.bukkit.entity.Player
 import org.bukkit.scheduler.BukkitRunnable
 
-class Click(private val player : Player) {
-    private var click : Int = 0
-    private var plugin : AntiHack = AntiHack.instance
-    private var manager : ClickManager = ClickManager()
+class Click(val player : Player) {
+    var plugin = AntiHack.instance
+    var manager = ClickManager()
+
+    var click = 0
+    var before = 0
 
     init {
         this.runCheck()
         manager.addClick(this)
     }
 
-
-    fun setClick(click: Int){
-        this.click = click
+    fun getCurrentClick(): Int {
+        return click - before
     }
-    fun addClick(click: Int){
+
+    fun getLimit() : Int {
+        return plugin.config.getInt("cps.limit")
+    }
+
+    fun getTime() : Int {
+        return plugin.config.getInt("cps.time")
+    }
+
+    fun addClick(click: Int) {
         this.click += click
     }
-    fun subClick(click: Int){
-        this.click -= click
-    }
-    fun getClick(): Int {
-        return click
-    }
-    fun getPlayer() : Player {
-        return player
-    }
+
 
     private fun runCheck() {
         var i = 0
-        var beforeClick = 0
-        val limit = plugin.config.getInt("cps.limit")
-        val task : BukkitRunnable = object : BukkitRunnable() {
+
+        object : BukkitRunnable() {
             override fun run() {
-                if(click - beforeClick >= limit){
-                    plugin.server.pluginManager.callEvent(PlayerCpsEvent(player,click-beforeClick))
+
+                if(getCurrentClick() >= getLimit()){
+                    plugin.server.pluginManager.callEvent(PlayerCpsEvent(player,getCurrentClick()))
                 }
-                if(i == plugin.config.getInt("cps.time")){
+
+                if(i == getTime()){
                     manager.removeClick(player)
                     this.cancel()
                 }
-                beforeClick = click
+                before = click
                 i += 1
             }
-        }
-        task.runTaskTimerAsynchronously(plugin,0L,20L)
+        }.runTaskTimerAsynchronously(plugin,0L,20L)
     }
 
 }

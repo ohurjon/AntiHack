@@ -15,16 +15,14 @@ class EventListener : Listener {
     @EventHandler
     fun reach(event: EntityDamageByEntityEvent) {
         if (event.cause.name == "ENTITY_ATTACK" && event.damager is Player) {
-            val range = event.damager.location.distance(event.entity.location)
-            val damager = (event.damager as Player)
-            val type = damager.inventory.itemInMainHand.type.name
-
-
+            val player = (event.damager as Player)
+            val range = player.location.distance(event.entity.location)
+            val type = player.inventory.itemInMainHand.type.name
             val config = plugin.config
 
             if (config.getList("reach.items").contains(type)) {
                 if (range >= config.getDouble("reach.range") )
-                    plugin.server.pluginManager.callEvent(PlayerReachEvent(damager,range))
+                    plugin.server.pluginManager.callEvent(PlayerReachEvent(player,range))
             }
         }
     }
@@ -42,6 +40,7 @@ class EventListener : Listener {
             click.addClick(1)
         }
     }
+
 
 }
 
