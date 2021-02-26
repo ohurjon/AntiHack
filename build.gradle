@@ -27,6 +27,8 @@ dependencies {
     compile 'org.apache.ant:ant:1.9.4'
     compile 'org.codehaus.plexus:plexus-utils:2.0.6'
 
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     compileOnly spigot('1.12.2')

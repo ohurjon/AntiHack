@@ -47,6 +47,7 @@ class Click(val player : Player) {
                     manager.removeClick(player)
                     this.cancel()
                 }
+
                 before = click
                 i += 1
             }

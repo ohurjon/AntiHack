@@ -1,5 +1,6 @@
 package kr.ohurjon.AntiHack
 
+import com.shampaggon.crackshot.events.WeaponDamageEntityEvent
 import kr.ohurjon.AntiHack.Event.PlayerReachEvent
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -25,6 +26,12 @@ class EventListener : Listener {
                     plugin.server.pluginManager.callEvent(PlayerReachEvent(player,range))
             }
         }
+    }
+
+    @EventHandler
+    fun crack(event:WeaponDamageEntityEvent){
+        event.player
+
     }
 
     @EventHandler
