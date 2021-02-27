@@ -32,6 +32,10 @@ class Click(val player : Player) {
         this.click += click
     }
 
+    fun subClick(click: Int) {
+        this.click -= click
+    }
+
 
     private fun runCheck() {
         var i = 0
@@ -40,7 +44,7 @@ class Click(val player : Player) {
             override fun run() {
 
                 if(getCurrentClick() >= getLimit()){
-                    plugin.server.pluginManager.callEvent(PlayerCpsEvent(player,getCurrentClick()))
+                    plugin.callEvent(PlayerCpsEvent(player,getCurrentClick()))
                 }
 
                 if(i == getTime()){

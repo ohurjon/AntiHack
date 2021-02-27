@@ -1,10 +1,10 @@
 package kr.ohurjon.AntiHack
 
-import com.shampaggon.crackshot.events.WeaponDamageEntityEvent
 import kr.ohurjon.AntiHack.Event.PlayerReachEvent
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
+import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.player.PlayerInteractEvent
 
@@ -23,28 +23,19 @@ class EventListener : Listener {
 
             if (config.getList("reach.items").contains(type)) {
                 if (range >= config.getDouble("reach.range") )
-                    plugin.server.pluginManager.callEvent(PlayerReachEvent(player,range))
+                    plugin.callEvent(PlayerReachEvent(player,range))
             }
         }
     }
 
     @EventHandler
-    fun crack(event:WeaponDamageEntityEvent){
-        event.player
-
+    fun block(event: BlockBreakEvent) {
+        ClickManager().getClick(event.player).subClick(1)
     }
-
     @EventHandler
     fun cps(event: PlayerInteractEvent)  {
         if(!event.action.name.contains("RIGHT") && event.action.name != "PHYSICAL") {
-            val manager = ClickManager()
-            val click: Click =
-                if (manager.containClick(event.player)) {
-                    manager.getClick(event.player)!!
-                } else {
-                    Click(event.player)
-                }
-            click.addClick(1)
+            ClickManager().getClick(event.player).addClick(1)
         }
     }
 
