@@ -1,4 +1,4 @@
-package kr.ohurjon.AntiHack
+package kr.ohurjon.antihack
 
 import kr.entree.spigradle.annotations.SpigotPlugin
 import org.bukkit.event.Event

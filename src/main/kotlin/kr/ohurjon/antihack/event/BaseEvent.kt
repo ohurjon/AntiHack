@@ -1,4 +1,4 @@
-package kr.ohurjon.AntiHack.Event
+package kr.ohurjon.antihack.event
 
 import org.bukkit.entity.Player
 import org.bukkit.event.HandlerList
@@ -9,7 +9,7 @@ open class BaseEvent(who: Player) : PlayerEvent(who) {
         private val handler: HandlerList = HandlerList()
         @JvmStatic
         fun getHandlerList(): HandlerList {
-            return handler;
+            return handler
         }
     }
 

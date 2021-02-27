@@ -1,6 +1,6 @@
-package kr.ohurjon.AntiHack
+package kr.ohurjon.antihack
 
-import kr.ohurjon.AntiHack.Event.PlayerCpsEvent
+import kr.ohurjon.antihack.event.PlayerCpsEvent
 import org.bukkit.entity.Player
 import org.bukkit.scheduler.BukkitRunnable
 

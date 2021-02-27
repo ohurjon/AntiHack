@@ -1,4 +1,4 @@
-package kr.ohurjon.AntiHack.Event
+package kr.ohurjon.antihack.event
 
 import org.bukkit.entity.Player
 
