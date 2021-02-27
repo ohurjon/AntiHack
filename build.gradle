@@ -31,7 +31,7 @@ dependencies {
 
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    compileOnly spigot('1.12.2')
+    compileOnly spigot("1.12.2")
 }
 
 compileKotlin {
@@ -43,14 +43,16 @@ compileTestKotlin {
 
 spigot {
     debug {
-        args '--nogui','--nojline'
-        jvmArgs '-Xmx8G'
+        args "--nogui"
+        jvmArgs '-Xmx8G','-Xms6G'
     }
 }
 
 spigot {
     authors 'ohurjon'
     apiVersion '1.12'
+    description 'The AntiHack for Crackshot is an available server.'
+    depends 'CrackShot'
 }
 
 task relocateShadowJar(type: ConfigureShadowRelocation) {
