@@ -20,18 +20,18 @@ dependencies {
     shadow localGroovy()
     shadow gradleApi()
 
-    compile 'org.jdom:jdom2:2.0.6'
-    compile 'org.ow2.asm:asm:6.0'
-    compile 'org.ow2.asm:asm-commons:6.0'
-    compile 'commons-io:commons-io:2.4'
-    compile 'org.apache.ant:ant:1.9.4'
-    compile 'org.codehaus.plexus:plexus-utils:2.0.6'
+    compileOnly 'org.jdom:jdom2:2.0.6'
+    compileOnly 'org.ow2.asm:asm:6.0'
+    compileOnly 'org.ow2.asm:asm-commons:6.0'
+    compileOnly 'commons-io:commons-io:2.4'
+    compileOnly 'org.apache.ant:ant:1.9.4'
+    compileOnly 'org.codehaus.plexus:plexus-utils:2.0.6'
 
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-
+    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly spigot("1.12.2")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    compileOnly spigot("1.12.2")
+
 }
 
 compileKotlin {
@@ -40,6 +40,7 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
+
 
 spigot {
     debug {
