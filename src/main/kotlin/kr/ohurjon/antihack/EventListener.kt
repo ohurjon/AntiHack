@@ -32,10 +32,10 @@ class EventListener : Listener {
 
     @EventHandler
     fun crack(event : WeaponDamageEntityEvent) {
-        val player = (event.damager as Player)
+        val player = event.player
         val range = player.location.distance(event.victim.location)
 
-        if (plugin.config.getList("reach.crack").contains(event.weaponTitle)) {
+        if (config.getList("reach.cracks").contains(event.weaponTitle)) {
             if(range >= config.getDouble("reach.range"))
                 plugin.callEvent(PlayerReachEvent(player,range))
         }
