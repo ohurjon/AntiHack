@@ -1,7 +1,5 @@
 reach :
   range : 5.5
-  items: ["WOOD_SWORD", "NETHER_STALK", "AIR"]
-  cracks: ["AK-47"]
 cps :
   time : 10
   limit : 10

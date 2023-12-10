@@ -1,12 +1,10 @@
 package kr.ohurjon.antihack
 
-import kr.entree.spigradle.annotations.SpigotPlugin
 import org.bukkit.event.Event
 
 import org.bukkit.plugin.java.JavaPlugin
 
 
-@SpigotPlugin
 class AntiHack : JavaPlugin() {
 
     companion object {
