@@ -31,6 +31,14 @@ class EventListener : Listener {
     }
 
     @EventHandler
+    fun cps(event: EntityDamageByEntityEvent) {
+        if (event.cause.name == "ENTITY_ATTACK" && event.damager is Player) {
+            val player = (event.damager as Player)
+            ClickManager().getClick(player).addClick(1)
+        }
+    }
+
+    @EventHandler
     fun crack(event : WeaponDamageEntityEvent) {
         val player = event.player
         val range = player.location.distance(event.victim.location)
@@ -55,4 +63,3 @@ class EventListener : Listener {
 
 
 }
-
